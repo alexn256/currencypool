@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import {MyComp} from "./component/MyComp.js";
+import {DateSelector} from "./component/DateSelector.js";
 import BarChart from "./component/BarChart.js";
+import {CurrencySelector} from "./component/CurrencySelector.js";
 
 function App() {
     return (
         <div>
-            <BarChart />
+            <CurrencySelector/>
+            <BarChart/>
+           <DateSelector/>
         </div>
     );
 }
