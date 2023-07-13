@@ -3,9 +3,9 @@ import React from "react";
 
 export const DateSelector = () => {
     return (
-        <div>
-            <button>«</button>
-            <select>
+        <div id="date-chooser">
+            <button id="prev">«</button>
+            <select id="dates">
                 <option value="2023-07-04">2023-07-04 Tu</option>
                
                 <option value="2023-07-05">2023-07-05 We</option>
@@ -23,7 +23,7 @@ export const DateSelector = () => {
                 <option value="2023-07-11">2023-07-11 Tu</option>
                
             </select>
-            <button>»</button>
+            <button id="next">»</button>
         </div>
     );
 };
