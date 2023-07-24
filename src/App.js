@@ -1,7 +1,7 @@
 import './App.css';
 
 import {DateSelector} from "./component/DateSelector.js";
-import BarChart from "./component/BarChart.js";
+import RateChart from "./component/RateChart.js";
 import {CurrencySelector} from "./component/CurrencySelector.js";
 import {Footer} from "./component/Footer.js";
 
@@ -9,8 +9,8 @@ function App() {
     return (
         <div>
             <CurrencySelector/>
-            <BarChart/>
-           <DateSelector/>
+            <RateChart/>
+            <DateSelector/>
             <Footer/>
         </div>
     );

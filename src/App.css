@@ -15,11 +15,12 @@ body {
 
 #currencies {
     height: 50px;
-    width: 80px;
+    width: auto;
     font-size: 20px;
     font-weight: bold;
     margin-left: 10px;
     padding-left: 5px;
+    outline: none;
 }
 
 #title {
@@ -38,6 +39,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 #prev, #next {
@@ -55,6 +57,23 @@ body {
     padding-left: 5px;
     padding-right: 5px;
     text-align: center;
+    outline: none;
+}
+
+#mapper {
+    width: 600px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#from, #to {
+    height: 30px;
+    width: 150px;
 }
 
 #footer {
