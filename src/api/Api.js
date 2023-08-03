@@ -44,7 +44,7 @@ export const getCurrencyCodes =  async () => {
                 code: key,
                 desc: json[key]
             }
-            currencies.push(entry);
+            currencies.unshift(entry);
         }
     }
     return currencies;

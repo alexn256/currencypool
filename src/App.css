@@ -10,7 +10,35 @@ body {
 #head {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin-top: 15px;
+}
+
+.rate-card {
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.rate-card span {
+    font-size: 45px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.rate-value {
+    margin: 0;
+}
+
+.up {
+    color: #2b9348;
+}
+
+.down {
+    color: #9e2a2b;
 }
 
 #currencies {
@@ -18,7 +46,6 @@ body {
     width: auto;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 10px;
     padding-left: 5px;
     outline: none;
 }

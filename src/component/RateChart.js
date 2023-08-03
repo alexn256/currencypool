@@ -18,14 +18,14 @@ export const options = {
 
 const last30DaysRates = await getLast30DaysRates(new Date(), 'usd', 'uah');
 
-const RateChart = () => {
+const RateChart = ({code}) => {
     const labels = last30DaysRates.map(entry => entry.date);
     const values = last30DaysRates.map(entry => entry.value);
     const data = {
         labels: labels,
         datasets: [
             {
-                label: "UAH",
+                label: code,
                 fill: true,
                 borderColor: 'rgb(53, 162, 235)',
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
