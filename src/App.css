@@ -8,9 +8,7 @@ body {
 }
 
 #head {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    text-align: center;
     margin-top: 15px;
 }
 
@@ -41,13 +39,64 @@ body {
     color: #9e2a2b;
 }
 
+.column {
+    width: 40px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.main {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.row-wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.selector {
+    border-bottom: 1px solid black;
+    width: 150px;
+}
+
+.selector div {
+    margin-bottom: 10px;
+}
+
+.selector input {
+    padding: 0 10px 0 10px;
+    border: none;
+    box-sizing: border-box;
+    height: 50px;
+    width: 100%;
+    font-size: large;
+    outline: none;
+}
+
+.selector input:focus {
+    background-color: #d8f3dc;
+}
+
 #currencies {
     height: 50px;
-    width: auto;
+    width: 100%;
     font-size: 20px;
     font-weight: bold;
     padding-left: 5px;
     outline: none;
+}
+
+.select-panel {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
 }
 
 #title {
@@ -55,11 +104,12 @@ body {
     margin-left: 5px;
 }
 
-#chart {
-    width: 1000px;
-    height: 400px;
+.board {
+    width: 1200px;
+    height: 300px;
+    border: 1px solid black;
     display: flex;
-    justify-content: center;
+    align-items: end;
 }
 
 #date-chooser {

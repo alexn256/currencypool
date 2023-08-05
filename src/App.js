@@ -1,20 +1,18 @@
 import './App.css';
 
-import {DateSelector} from "./component/DateSelector.js";
-import RateChart from "./component/RateChart.js";
-import {CurrencySelector} from "./component/CurrencySelector.js";
 import {Footer} from "./component/Footer.js";
-import {Convertor} from "./component/Convertor";
-import {RateCard} from "./component/RateCard";
+import {Header} from "./component/Header";
+import {SelectPanel} from "./component/SelectPanel";
+import {Board} from "./component/Board";
 
 function App() {
     return (
         <div>
-            <CurrencySelector/>
-            <RateCard prev={36.56} curr={36.57}/>
-            <RateChart code={'USD'}/>
-            <DateSelector/>
-            <Convertor code={'UAH'}/>
+            <Header/>
+            <main className="main">
+                <SelectPanel/>
+                <Board/>
+            </main>
             <Footer/>
         </div>
     );
