@@ -1,14 +1,13 @@
-import RateChart from "./RateChart";
 import {Selector} from "./Selector";
 import {RateCard} from "./RateCard";
 
-export const SelectPanel = () => {
+export const SelectPanel = ({data}) => {
     return (
         <div className="row-wrapper">
             <div className="select-panel">
-                <Selector/>
-                <RateCard prev={36.56} curr={36.57}/>
-                <Selector/>
+                <Selector selected={data.base}/>
+                <RateCard data={data}/>
+                <Selector selected={data.out}/>
             </div>
         </div>
     );

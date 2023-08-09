@@ -3,12 +3,14 @@ import {getCurrencyCodes} from "../api/Api";
 const codes = await getCurrencyCodes();
 
 
-export const Selector = () => {
+export const Selector = ({selected}) => {
     return (
         <div className="selector">
             <div>
                 <label htmlFor="currency">
-                    <select id="currencies">{ codes.map(entry => <option key={entry.code} value={entry.code}>{entry.code.toUpperCase()}</option>) }</select>
+                    <select defaultValue={selected} id="currencies">{
+                        codes.map(entry => entry.code.toUpperCase()).map(code => <option key={code} value={code}>{code}</option>)
+                    }</select>
                 </label>
             </div>
             <input id="currency" type="text"/>
