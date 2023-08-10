@@ -6,18 +6,24 @@ export const Board = ({data}) => {
     return (
         <div className="row-wrapper">
             <div className="board">
-                {values.map((entry, index) => <Column key={index} rate={entry.rate} height={entry.height} date={entry.date} /> )}
+                {values.map((data, index) => <Column key={index} columnData={data}/>)}
             </div>
         </div>
     );
 }
 
 const getBoardData = (data) => {
-    const min = Math.min(...data.map(entry => entry.value));
-    const maxDiff = Math.max(...data.map(entry => entry.value - min));
-    return data.map(entry => ({
-        date: new Date(entry.date),
-        height: (((entry.value - min) / maxDiff) * 100).toFixed(2),
-        rate: entry.value.toFixed(2)
-    }));
+    const values = data.map(entry => Math.floor(entry.value * 100) / 100);
+    const min = Math.min(...values);
+    const maxDiff = Math.max(...values) - min;
+    return data.map((entry, index) => {
+        const rate = values[index];
+        return {
+            date: new Date(entry.date),
+            height: (((entry.value - min) / maxDiff) * 100).toFixed(2),
+            rate: rate,
+            min: rate === min,
+            max: rate === min + maxDiff
+        };
+    });
 }
