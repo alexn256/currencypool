@@ -5,9 +5,7 @@ export const Board = ({data}) => {
     const values =  getBoardData(data);
     return (
         <div className="row-wrapper">
-            <div className="board">
-                {values.map((data, index) => <Column key={index} columnData={data}/>)}
-            </div>
+            <div className="board">{values.map(data => <Column key={data.id} columnData={data}/>)}</div>
         </div>
     );
 }

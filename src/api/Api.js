@@ -1,3 +1,5 @@
+import {v1 as uuid} from "uuid"
+
 const fetch = require("node-fetch")
 
 export const getRate = async (date, base, out) => {
@@ -7,6 +9,7 @@ export const getRate = async (date, base, out) => {
         const text = await response.text();
         const json = JSON.parse(text);
         return {
+            id: uuid(),
             date: json['date'],
             value: json[out]
         }
@@ -41,6 +44,7 @@ export const getCurrencyCodes =  async () => {
         const json = JSON.parse(text);
         for (let key in  json) {
             const entry = {
+                id: uuid(),
                 code: key,
                 desc: json[key]
             }

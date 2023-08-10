@@ -9,7 +9,10 @@ export const Selector = ({selected}) => {
             <div>
                 <label htmlFor="currency">
                     <select defaultValue={selected} id="currencies">{
-                        codes.map(entry => entry.code.toUpperCase()).map(code => <option key={code} value={code}>{code}</option>)
+                        codes.map(item => {
+                            const code = item.code.toUpperCase();
+                            return <option key={item.id} value={code}>{code}</option>;
+                        })
                     }</select>
                 </label>
             </div>
