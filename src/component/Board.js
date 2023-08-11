@@ -17,6 +17,7 @@ const getBoardData = (data) => {
     return data.map((entry, index) => {
         const rate = values[index];
         return {
+            id: entry.id,
             date: new Date(entry.date),
             height: (((entry.value - min) / maxDiff) * 100).toFixed(2),
             rate: rate,

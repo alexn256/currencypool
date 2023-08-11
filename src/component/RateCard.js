@@ -10,7 +10,7 @@ export const RateCard = ({data}) => {
     return (
         <div className='rate-card'>
             <h1 className="rate-value">
-                {curr.toFixed(2)}
+                {Math.floor(curr * 100) / 100}
                 <span className={style}>{value}</span>
             </h1>
             <small>{data.base}/{data.out}</small>

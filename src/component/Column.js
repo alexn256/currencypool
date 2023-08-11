@@ -9,11 +9,11 @@ export const Column = ({columnData}) => {
         <div className="column">
             <div className="column-date">
                 <div>{date.getFullYear()}</div>
-                <div>{date.getDate() + '/' + date.getMonth()}</div>
+                <div>{date.getDate() + '/' + (date.getMonth() + 1)}</div>
             </div>
             <div className="column-value" style={style}>
                 <div className={classes} >
-                    <small>{columnData.rate}</small>
+                    <small className="column-rate">{columnData.rate}</small>
                 </div>
             </div>
         </div>
