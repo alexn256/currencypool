@@ -16,7 +16,7 @@ export const Selector = ({selected}) => {
                     }</select>
                 </label>
             </div>
-            <input id="currency" type="text"/>
+            <input step="any" id="currency" type='number' min={0} placeholder="0.00"/>
         </div>
     );
 }

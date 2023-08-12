@@ -120,12 +120,13 @@ body {
     box-sizing: border-box;
     height: 50px;
     width: 100%;
-    font-size: large;
+    font-size: 20px;
+    font-weight: bold;
     outline: none;
 }
 
 .selector input:focus {
-    background-color: #d8f3dc;
+    background-color: #dde7c7;
 }
 
 .legend {
