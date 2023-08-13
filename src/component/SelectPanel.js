@@ -1,29 +1,25 @@
 import {Selector} from "./Selector";
 import {RateCard} from "./RateCard";
-import {useState} from "react";
 
-export const SelectPanel = ({data}) => {
-
-    const [stateObj, updateStateObj] = useState(data);
+export const SelectPanel = ({stateObj, updateObj}) => {
 
     const setBase = (baseCurr) => {
-        updateStateObj((obj) => {
+        updateObj((obj) => {
             return {...obj, base: baseCurr }
         });
     }
     const setOut = (outCurr) => {
-        updateStateObj((obj) => {
+        updateObj((obj) => {
             return {...obj, out: outCurr }
         });
     }
 
-
     return (
         <div className="row-wrapper">
             <div className="select-panel">
-                <Selector selected={stateObj.base} setCurr={setBase}/>
+                <Selector selected={stateObj.base.toUpperCase()} setCurr={setBase}/>
                 <RateCard data={stateObj}/>
-                <Selector selected={stateObj.out} setCurr={setOut}/>
+                <Selector selected={stateObj.out.toUpperCase()} setCurr={setOut}/>
             </div>
         </div>
     );

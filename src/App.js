@@ -7,17 +7,58 @@ import {Board} from "./component/Board";
 import {getLast30DaysRates} from "./api/Api";
 import {Legend} from "./component/Legend";
 import {DateRange} from "./component/DateRange";
+import {useEffect, useState} from "react";
 
-const last30DaysRates = await getLast30DaysRates(new Date(), 'usd', 'uah');
 function App() {
 
-    const data = {base: 'USD', out: 'UAH', prev: last30DaysRates[last30DaysRates.length - 2].value, curr: last30DaysRates[last30DaysRates.length - 1].value};
+    const [obj, updateObj] = useState({
+        base: 'usd',
+        out: 'uah',
+        prev: 0.00,
+        curr: 0.00,
+        rates: [],
+        date: new Date()
+    });
+
+
+    useEffect(()=> {
+        console.log('App useEffect');
+        async function fetchData (date, baseCurrency, outCurrency) {
+            const last30DaysRates = await getLast30DaysRates(date, baseCurrency, outCurrency);
+            updateObj((oldObj) => {
+                return {
+                    base: oldObj.base,
+                    out: oldObj.out,
+                    prev: last30DaysRates[last30DaysRates.length - 2].value,
+                    curr: last30DaysRates[last30DaysRates.length - 1].value,
+                    rates: last30DaysRates,
+                    date: oldObj.date
+                }
+            });
+        }
+        fetchData(obj.date, obj.base, obj.out);
+    },[]);
+
+    const setBaseCurrency = (baseCurr) => {
+        updateObj((obj) => {
+            return {...obj, base: baseCurr }
+        });
+        console.log(obj);
+    }
+
+    const setOutCurrency = (outCurr) => {
+        updateObj((obj) => {
+            return {...obj, out: outCurr }
+        });
+        console.log(obj);
+    }
+
     return (
         <div>
             <Header/>
             <main className="main">
-                <SelectPanel data={data}/>
-                <Board data={last30DaysRates}/>
+                <SelectPanel stateObj={obj} updateObj={updateObj}/>
+                <Board rates={obj.rates}/>
                 <Legend/>
                 <DateRange/>
             </main>

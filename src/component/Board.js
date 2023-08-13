@@ -1,8 +1,8 @@
 import {Column} from "./Column";
 
 
-export const Board = ({data}) => {
-    const values =  getBoardData(data);
+export const Board = ({rates}) => {
+    const values =  getBoardData(rates);
     return (
         <div className="row-wrapper">
             <div className="board">{values.map(data => <Column key={data.id} columnData={data}/>)}</div>
@@ -10,11 +10,11 @@ export const Board = ({data}) => {
     );
 }
 
-const getBoardData = (data) => {
-    const values = data.map(entry => Math.floor(entry.value * 100) / 100);
+const getBoardData = (rates) => {
+    const values = rates.map(entry => Math.floor(entry.value * 100) / 100);
     const min = Math.min(...values);
     const maxDiff = Math.max(...values) - min;
-    return data.map((entry, index) => {
+    return rates.map((entry, index) => {
         const rate = values[index];
         return {
             id: entry.id,

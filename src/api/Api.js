@@ -1,9 +1,11 @@
 import {v4 as uuid} from "uuid"
 
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
+
+const BASE_URL = 'http://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1';
 
 export const getRate = async (date, base, out) => {
-    const url = `http://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/${date}/currencies/${base}/${out}.json`;
+    const url = `${BASE_URL}/${date}/currencies/${base}/${out}.json`;
     const response = await fetch(url);
     if (response.ok) {
         const text = await response.text();
@@ -27,16 +29,17 @@ export const getLast30DaysRates = async (date, base, out) => {
 }
 
 export const getLast30DaysDates = (date) => {
+    const copyDate = new Date(date);
     const dates = new Array(30);
     for (let i = 30; i >= 0; i--) {
-        dates[i] = date.toISOString().slice(0, 10);
-        date.setDate(date.getDate() - 1);
+        dates[i] = copyDate.toISOString().slice(0, 10);
+        copyDate.setDate(copyDate.getDate() - 1);
     }
     return dates;
 }
 
 export const getCurrencyCodes =  async () => {
-    const url = `http://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json`;
+    const url = `${BASE_URL}/latest/currencies.json`;
     const response = await fetch(url);
     const currencies = [];
     if (response.ok) {
