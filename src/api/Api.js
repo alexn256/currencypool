@@ -6,6 +6,7 @@ const BASE_URL = 'http://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1';
 
 export const getRate = async (date, base, out) => {
     const url = `${BASE_URL}/${date}/currencies/${base}/${out}.json`;
+    console.log(url);
     const response = await fetch(url);
     if (response.ok) {
         const text = await response.text();
@@ -21,8 +22,8 @@ export const getRate = async (date, base, out) => {
 export const getLast30DaysRates = async (date, base, out) => {
     const result = [];
     const dates = getLast30DaysDates(date);
-    for (let date of dates) {
-        const entry = await getRate(date, base, out);
+    for (let d of dates) {
+        const entry = await getRate(d, base, out);
         result.push(entry);
     }
     return result;

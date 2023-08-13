@@ -9,13 +9,11 @@ export const RateCard = ({data}) => {
         value =  '▼';
         style = 'down';
     }
-
-    const [rate, setRate] = useState(Math.floor(curr * 100) / 100);
-
+    
     return (
         <div className='rate-card'>
             <h1 className="rate-value">
-                {rate}
+                {Math.floor(data.curr * 100) / 100}
                 <span className={style}>{value}</span>
             </h1>
             <small>{data.base}/{data.out}</small>

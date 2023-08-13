@@ -39,20 +39,6 @@ function App() {
         fetchData(obj.date, obj.base, obj.out);
     },[]);
 
-    const setBaseCurrency = (baseCurr) => {
-        updateObj((obj) => {
-            return {...obj, base: baseCurr }
-        });
-        console.log(obj);
-    }
-
-    const setOutCurrency = (outCurr) => {
-        updateObj((obj) => {
-            return {...obj, out: outCurr }
-        });
-        console.log(obj);
-    }
-
     return (
         <div>
             <Header/>

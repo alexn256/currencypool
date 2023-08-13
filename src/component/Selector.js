@@ -5,8 +5,9 @@ const codes = await getCurrencyCodes();
 
 export const Selector = ({selected, setCurr}) => {
 
-    const getCurrency = (e) => {
+    const getCurrency = async (e) => {
         const code = e.target.value;
+        console.log('setCurr');
         setCurr(code.toLowerCase());
     }
 
