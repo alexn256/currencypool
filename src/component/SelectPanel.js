@@ -4,11 +4,13 @@ import {getLast30DaysRates} from "../api/Api";
 
 export const SelectPanel = ({stateObj, updateObj}) => {
 
-    const setBase = async (baseCurr) => {
-        const last30DaysRates = await getLast30DaysRates(stateObj.date, baseCurr, stateObj.out);
+    const updateState = async (baseCurr, outCurr) => {
+        const last30DaysRates = await getLast30DaysRates(stateObj.date, baseCurr, outCurr);
         updateObj((obj) => {
-            const newObj = {...obj,
+            const newObj = {
+                ...obj,
                 base: baseCurr,
+                out: outCurr,
                 prev: last30DaysRates[last30DaysRates.length - 2].value,
                 curr: last30DaysRates[last30DaysRates.length - 1].value,
                 rates: last30DaysRates,
@@ -17,10 +19,13 @@ export const SelectPanel = ({stateObj, updateObj}) => {
             return newObj;
         });
     }
+
+    const setBase = (baseCurr) => {
+        return updateState(baseCurr, stateObj.out);
+    }
+
     const setOut = (outCurr) => {
-        updateObj((obj) => {
-            return {...obj, out: outCurr }
-        });
+        return updateState(stateObj.base, outCurr);
     }
 
     return (
