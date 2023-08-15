@@ -46,7 +46,7 @@ function App() {
                 <SelectPanel stateObj={obj} updateObj={updateObj}/>
                 <Board rates={obj.rates}/>
                 <Legend/>
-                <DateRange/>
+                <DateRange stateObj={obj} updateObj={updateObj}/>
             </main>
             <Footer/>
         </div>

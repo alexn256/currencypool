@@ -30,16 +30,16 @@ export const getLast30DaysDates = (date) => {
 
 export const getLast30DaysRates = async (date, base, out) => {
     const dates = getLast30DaysDates(date);
-    return  await Promise.all(dates.map(d => getRate(d, base, out)));
+    return await Promise.all(dates.map(d => getRate(d, base, out)));
 }
-export const getCurrencyCodes =  async () => {
+export const getCurrencyCodes = async () => {
     const url = `${BASE_URL}/latest/currencies.json`;
     const response = await fetch(url);
     const currencies = [];
     if (response.ok) {
         const text = await response.text();
         const json = JSON.parse(text);
-        for (let key in  json) {
+        for (let key in json) {
             const entry = {
                 id: uuid(),
                 code: key,
