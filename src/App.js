@@ -8,6 +8,7 @@ import {getLast30DaysRates} from "./api/Api";
 import {Legend} from "./component/Legend";
 import {DateRange} from "./component/DateRange";
 import {useEffect, useState} from "react";
+import {CurrencyDescriptor} from "./component/CurrencyDescriptor";
 
 function App() {
 
@@ -20,18 +21,16 @@ function App() {
         date: new Date()
     });
 
-
     useEffect(()=> {
-        console.log('App useEffect');
         async function fetchData (date, baseCurrency, outCurrency) {
-            const last30DaysRates = await getLast30DaysRates(date, baseCurrency, outCurrency);
+            const range = await getLast30DaysRates(date, baseCurrency, outCurrency);
             updateObj((oldObj) => {
                 return {
                     base: oldObj.base,
                     out: oldObj.out,
-                    prev: last30DaysRates[last30DaysRates.length - 2].value,
-                    curr: last30DaysRates[last30DaysRates.length - 1].value,
-                    rates: last30DaysRates,
+                    prev: range[range.length - 2].value,
+                    curr: range[range.length - 1].value,
+                    rates: range,
                     date: oldObj.date
                 }
             });
@@ -44,6 +43,7 @@ function App() {
             <Header/>
             <main className="main">
                 <SelectPanel stateObj={obj} updateObj={updateObj}/>
+                <CurrencyDescriptor base={"Ukrainian hrivnya"} out={"United States Dollar"} />
                 <Board rates={obj.rates}/>
                 <Legend/>
                 <DateRange stateObj={obj} updateObj={updateObj}/>

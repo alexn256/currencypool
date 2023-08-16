@@ -162,6 +162,14 @@ body {
     justify-content: space-between;
 }
 
+.currency-panel {
+    width: 600px;
+    color: #354f52;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
 #title {
     margin-right: 5px;
     margin-left: 5px;

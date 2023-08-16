@@ -50,3 +50,5 @@ export const getCurrencyCodes = async () => {
     }
     return currencies;
 }
+
+//TODO see https://exchangerate.host/#/#docs
