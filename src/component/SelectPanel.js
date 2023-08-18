@@ -30,9 +30,9 @@ export const SelectPanel = ({stateObj, updateObj}) => {
     return (
         <div className="row-wrapper">
             <div className="select-panel">
-                <Selector selected={'USD'} setCurr={setBase}/>
+                <Selector selected={stateObj.base.code} setCurr={setBase}/>
                 <RateCard data={stateObj}/>
-                <Selector selected={'UAH'} setCurr={setOut}/>
+                <Selector selected={stateObj.out.code} setCurr={setOut}/>
             </div>
         </div>
     );

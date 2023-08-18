@@ -13,8 +13,8 @@ import {CurrencyDescriptor} from "./component/CurrencyDescriptor";
 function App() {
 
     const [obj, updateObj] = useState({
-        base: {code:'usd', description:'Desc1'},
-        out: {code:'uah', description:'Desc1'},
+        base: {code:'USD', description:'United States Dollar'},
+        out: {code:'UAH', description:'Ukrainian Hryvnia'},
         prev: 0.00,
         curr: 0.00,
         rates: [],

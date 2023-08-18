@@ -2,10 +2,10 @@ import {v4 as uuid} from "uuid"
 
 const fetch = require("node-fetch");
 
-const BASE_URL = 'http://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1';
+const BASE_URL = 'https://api.exchangerate.host';
 
 export const getRate = async (date, base, out) => {
-    const url = `${BASE_URL}/${date}/currencies/${base}/${out}.json`;
+    const url =  `${BASE_URL}/convert?from=${base}&to=${out}&date=${date}`;
     const response = await fetch(url);
     if (response.ok) {
         const text = await response.text();
@@ -13,7 +13,7 @@ export const getRate = async (date, base, out) => {
         return {
             id: uuid(),
             date: json['date'],
-            value: json[out]
+            value: json['result']
         }
     }
 };
@@ -32,8 +32,9 @@ export const getLast30DaysRates = async (date, base, out) => {
     const dates = getLast30DaysDates(date);
     return await Promise.all(dates.map(d => getRate(d, base, out)));
 }
+
 export const getCurrencyCodes = async () => {
-    const url = 'https://api.exchangerate.host/symbols';
+    const url = `${BASE_URL}/symbols`;
     const response = await fetch(url);
     const currencies = [];
     if (response.ok) {
@@ -51,5 +52,3 @@ export const getCurrencyCodes = async () => {
     }
     return currencies;
 }
-
-//TODO see https://exchangerate.host/#/#docs
