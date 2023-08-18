@@ -33,17 +33,18 @@ export const getLast30DaysRates = async (date, base, out) => {
     return await Promise.all(dates.map(d => getRate(d, base, out)));
 }
 export const getCurrencyCodes = async () => {
-    const url = `${BASE_URL}/latest/currencies.json`;
+    const url = 'https://api.exchangerate.host/symbols';
     const response = await fetch(url);
     const currencies = [];
     if (response.ok) {
         const text = await response.text();
         const json = JSON.parse(text);
-        for (let key in json) {
+        const symbols = json.symbols;
+        for (let symbol in symbols) {
             const entry = {
                 id: uuid(),
-                code: key,
-                desc: json[key]
+                code: symbol,
+                description: symbols[symbol].description
             }
             currencies.push(entry);
         }

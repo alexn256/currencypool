@@ -6,9 +6,10 @@ const codes = await getCurrencyCodes();
 export const Selector = ({selected, setCurr}) => {
 
     const getCurrency = async (e) => {
-        const code = e.target.value;
-        console.log('setCurr');
-        setCurr(code.toLowerCase());
+        const selected = e.target[e.target.selectedIndex];
+        const code = selected.text;
+        const description = selected.getAttribute('desc');
+        setCurr({code: code.toLowerCase(), description: description});
     }
 
     return (
@@ -18,7 +19,8 @@ export const Selector = ({selected, setCurr}) => {
                     <select onChange={getCurrency} defaultValue={selected} id="currencies">{
                         codes.map(item => {
                             const code = item.code.toUpperCase();
-                            return <option key={item.id} value={code}>{code}</option>;
+                            const description =  item.description;
+                            return <option key={item.id} desc={description} value={code}>{code}</option>;
                         })
                     }</select>
                 </label>

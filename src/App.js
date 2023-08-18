@@ -13,8 +13,8 @@ import {CurrencyDescriptor} from "./component/CurrencyDescriptor";
 function App() {
 
     const [obj, updateObj] = useState({
-        base: 'usd',
-        out: 'uah',
+        base: {code:'usd', description:'Desc1'},
+        out: {code:'uah', description:'Desc1'},
         prev: 0.00,
         curr: 0.00,
         rates: [],
@@ -35,7 +35,7 @@ function App() {
                 }
             });
         }
-        fetchData(obj.date, obj.base, obj.out);
+        fetchData(obj.date, obj.base.code, obj.out.code);
     },[]);
 
     return (
@@ -43,7 +43,7 @@ function App() {
             <Header/>
             <main className="main">
                 <SelectPanel stateObj={obj} updateObj={updateObj}/>
-                <CurrencyDescriptor base={"Ukrainian hrivnya"} out={"United States Dollar"} />
+                <CurrencyDescriptor base={obj.base.description} out={obj.out.description} />
                 <Board rates={obj.rates}/>
                 <Legend/>
                 <DateRange stateObj={obj} updateObj={updateObj}/>

@@ -7,7 +7,7 @@ export const DateRange = ({ stateObj, updateObj }) => {
     const changeDate = async (e) => {
         const selectedDate = e.target.value;
         const date = new Date(selectedDate);
-        const rates = await getLast30DaysRates(date, stateObj.base, stateObj.out);
+        const rates = await getLast30DaysRates(date, stateObj.base.code, stateObj.out.code);
         updateObj((obj) => {
             return {
                 ...obj,

@@ -16,7 +16,7 @@ export const RateCard = ({data}) => {
                 {Math.floor(data.curr * 100) / 100}
                 <span className={style}>{value}</span>
             </h1>
-            <small>{data.base}/{data.out}</small>
+            <small>{data.base.code}/{data.out.code}</small>
         </div>
     );
 }
