@@ -1,22 +1,20 @@
-import {useState} from "react";
 
-export const RateCard = ({data}) => {
-    const prev = data.prev;
-    const curr = data.curr;
-    let style = 'up';
-    let value = '▲';
-    if (prev >= curr) {
-        value =  '▼';
-        style = 'down';
-    }
-    
+export const RateCard = ({ data }) => {
+    const { prev, curr, base, out } = data;
+
+    const isUp = prev < curr;
+    const style = isUp ? 'up' : 'down';
+    const value = isUp ? '▲' : '▼';
+
+    const displayedValue = Math.floor(curr * 100) / 100;
+
     return (
         <div className='rate-card'>
             <h1 className="rate-value">
-                {Math.floor(data.curr * 100) / 100}
+                {displayedValue}
                 <span className={style}>{value}</span>
             </h1>
-            <small>{data.base.code}/{data.out.code}</small>
+            <small>{base.code}/{out.code}</small>
         </div>
     );
 }

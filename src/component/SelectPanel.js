@@ -1,21 +1,20 @@
 import {Selector} from "./Selector";
 import {RateCard} from "./RateCard";
-import {getLast30DaysRates} from "../api/Api";
+import {getCurrencyCodes, getLast30DaysRates} from "../api/Api";
 
 export const SelectPanel = ({stateObj, updateObj}) => {
 
     const updateState = async (baseCurr, outCurr) => {
-        const last30DaysRates = await getLast30DaysRates(stateObj.date, baseCurr.code, outCurr.code);
+        const rates = await getLast30DaysRates(stateObj.date, baseCurr.code, outCurr.code);
         updateObj((obj) => {
-            const newObj = {
+            return {
                 ...obj,
                 base: baseCurr,
                 out: outCurr,
-                prev: last30DaysRates[last30DaysRates.length - 2].value,
-                curr: last30DaysRates[last30DaysRates.length - 1].value,
-                rates: last30DaysRates,
+                prev: rates[rates.length - 2].value,
+                curr: rates[rates.length - 1].value,
+                rates: rates,
             };
-            return newObj;
         });
     }
 

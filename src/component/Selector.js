@@ -3,29 +3,30 @@ import {getCurrencyCodes} from "../api/Api";
 const codes = await getCurrencyCodes();
 
 
-export const Selector = ({selected, setCurr}) => {
+export const Selector = ({ selected, setCurr }) => {
+    const getCurrency = (e) => {
+        const selectedOption = e.target[e.target.selectedIndex];
+        const code = selectedOption.textContent;
+        const description = selectedOption.getAttribute('desc');
+        setCurr({ code: code.toLowerCase(), description });
+    }
 
-    const getCurrency = async (e) => {
-        const selected = e.target[e.target.selectedIndex];
-        const code = selected.text;
-        const description = selected.getAttribute('desc');
-        setCurr({code: code.toLowerCase(), description: description});
+    const renderOptions = (codes) => {
+        return codes.map(({ id, code, description }) => (
+            <option key={id} desc={description} value={code.toUpperCase()}>
+                {code.toUpperCase()}
+            </option>
+        ));
     }
 
     return (
         <div className="selector">
             <div>
                 <label htmlFor="currency">
-                    <select onChange={getCurrency} defaultValue={selected} id="currencies">{
-                        codes.map(item => {
-                            const code = item.code.toUpperCase();
-                            const description =  item.description;
-                            return <option key={item.id} desc={description} value={code}>{code}</option>;
-                        })
-                    }</select>
+                    <select onChange={getCurrency} defaultValue={selected} id="currencies">{renderOptions(codes)}</select>
                 </label>
             </div>
-            <input step="any" id="currency" type='number' min={0} placeholder="0.00"/>
+            <input step="any" id="currency" type='number' min={0} placeholder="0.00" />
         </div>
     );
 }
