@@ -1,8 +1,8 @@
 import {Selector} from "./Selector";
 import {RateCard} from "./RateCard";
-import {getCurrencyCodes, getLast30DaysRates} from "../api/Api";
+import {getLast30DaysRates, roundToDecimal} from "../api/Api";
 
-export const SelectPanel = ({stateObj, updateObj}) => {
+export const SelectPanel = ({stateObj, updateObj, baseVal, calcBase, outVal, calcOut, setOutVal}) => {
 
     const updateState = async (baseCurr, outCurr) => {
         const rates = await getLast30DaysRates(stateObj.date, baseCurr.code, outCurr.code);
@@ -16,6 +16,8 @@ export const SelectPanel = ({stateObj, updateObj}) => {
                 rates: rates,
             };
         });
+        const rate = rates[rates.length - 1].value;
+        setOutVal(roundToDecimal(rate * baseVal));
     }
 
     const setBase = (baseCurr) => {
@@ -29,9 +31,9 @@ export const SelectPanel = ({stateObj, updateObj}) => {
     return (
         <div className="row-wrapper">
             <div className="select-panel">
-                <Selector selected={stateObj.base.code} setCurr={setBase}/>
+                <Selector selected={stateObj.base.code} setCurr={setBase} calc={calcOut} inputValue={baseVal}/>
                 <RateCard data={stateObj}/>
-                <Selector selected={stateObj.out.code} setCurr={setOut}/>
+                <Selector selected={stateObj.out.code} setCurr={setOut} calc={calcBase} inputValue={outVal}/>
             </div>
         </div>
     );

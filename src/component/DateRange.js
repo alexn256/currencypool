@@ -1,6 +1,6 @@
-import {getLast30DaysRates} from "../api/Api";
+import {formatCurrentDate, getLast30DaysRates, roundToDecimal} from "../api/Api";
 
-export const DateRange = ({ stateObj, updateObj }) => {
+export const DateRange = ({ stateObj, updateObj, baseVal, calcOut }) => {
     const startDate = "2022-01-01";
     const currentDate = formatCurrentDate();
 
@@ -9,7 +9,7 @@ export const DateRange = ({ stateObj, updateObj }) => {
         const { base, out } = stateObj;
         const rates = await getLast30DaysRates(selectedDate, base.code, out.code);
 
-        const updatedObj = {
+        const obj = {
             ...stateObj,
             prev: rates[rates.length - 2].value,
             curr: rates[rates.length - 1].value,
@@ -17,7 +17,10 @@ export const DateRange = ({ stateObj, updateObj }) => {
             date: selectedDate
         };
 
-        updateObj(updatedObj);
+        updateObj(obj);
+
+        const rate = obj.curr;
+        calcOut(roundToDecimal(baseVal * rate));
     };
 
     return (
@@ -36,11 +39,4 @@ export const DateRange = ({ stateObj, updateObj }) => {
             </div>
         </div>
     );
-}
-
-const formatCurrentDate = (date = new Date()) => {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
 }

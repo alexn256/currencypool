@@ -10,10 +10,11 @@ export const getRate = async (date, base, out) => {
     if (response.ok) {
         const text = await response.text();
         const json = JSON.parse(text);
+        const rate = json['result'];
         return {
             id: uuid(),
             date: json['date'],
-            value: json['result']
+            value: roundToDecimal(rate)
         }
     }
 };
@@ -51,4 +52,15 @@ export const getCurrencyCodes = async () => {
         }
     }
     return currencies;
+}
+
+export const roundToDecimal = (num) => {
+    return Math.round(num * 1000) / 1000;
+};
+
+export const formatCurrentDate = (date = new Date()) => {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }

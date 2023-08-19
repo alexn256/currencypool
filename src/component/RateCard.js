@@ -6,12 +6,10 @@ export const RateCard = ({ data }) => {
     const style = isUp ? 'up' : 'down';
     const value = isUp ? '▲' : '▼';
 
-    const displayedValue = Math.floor(curr * 100) / 100;
-
     return (
         <div className='rate-card'>
             <h1 className="rate-value">
-                {displayedValue}
+                {curr}
                 <span className={style}>{value}</span>
             </h1>
             <small>{base.code}/{out.code}</small>
