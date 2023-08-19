@@ -12,7 +12,7 @@ export const RateCard = ({ data }) => {
                 {curr}
                 <span className={style}>{value}</span>
             </h1>
-            <small>{base.code}/{out.code}</small>
+            <small>{base.code.toLowerCase()}/{out.code.toLowerCase()}</small>
         </div>
     );
 }
