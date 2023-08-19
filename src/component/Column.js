@@ -14,7 +14,7 @@ export const Column = ({columnData}) => {
             </div>
             <div className="column-value" style={style}>
                 <div className={classes} >
-                    <small className="column-rate">{columnData.rate}</small>
+                    <span className="column-rate">{columnData.rate}</span>
                 </div>
             </div>
         </div>

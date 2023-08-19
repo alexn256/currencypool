@@ -8,10 +8,7 @@ export const RateCard = ({ data }) => {
 
     return (
         <div className='rate-card'>
-            <h1 className="rate-value">
-                {curr}
-                <span className={style}>{value}</span>
-            </h1>
+            <div className="rate-value">{curr}<span className={style}>{value}</span></div>
             <small>{base.code.toLowerCase()}/{out.code.toLowerCase()}</small>
         </div>
     );

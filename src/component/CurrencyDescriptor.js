@@ -3,6 +3,7 @@ export const CurrencyDescriptor = ({ base, out }) => {
         <div className="row-wrapper">
             <div className="currency-panel">
                 <small>{base}</small>
+                <small>|</small>
                 <small>{out}</small>
             </div>
         </div>

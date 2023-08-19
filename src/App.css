@@ -20,17 +20,19 @@ body {
 }
 
 .rate-card span {
-    font-size: 3rem;
+    font-size: 2.75vw;
     padding-left: 5px;
     padding-right: 5px;
 }
 
 .rate-card small {
     color: gray;
-    font-size: 75%;
+    font-size: 0.8vw;
 }
 
 .rate-value {
+    font-size: 2vw;
+    font-weight: bold;
     margin: 0;
 }
 
@@ -53,7 +55,7 @@ body {
     background-color: #dee2e6;
     width: 2vw;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.6vw;
     font-weight: bold;
 }
 
@@ -64,7 +66,7 @@ body {
 }
 
 .column-rate {
-    font-size: 0.7rem;
+    font-size: 0.6vw;
     font-weight: bold;
     z-index: 1;
 }
@@ -106,7 +108,7 @@ body {
 
 .selector {
     border-bottom: 1px solid black;
-    width: 8vw;
+    width: 14vw;
 }
 
 .selector div {
@@ -119,7 +121,7 @@ body {
     box-sizing: border-box;
     height: 4.6vh;
     width: 100%;
-    font-size: 1.4rem;
+    font-size: 1.4vw;
     font-weight: bold;
     outline: none;
 }
@@ -129,6 +131,7 @@ body {
 }
 
 .legend {
+    font-size: 1vw;
     display: flex;
 }
 
@@ -148,7 +151,7 @@ body {
     border: 0;
     height: 4.6vh;
     width: 100%;
-    font-size: 1.4rem;
+    font-size: 1.4vw;
     font-weight: bold;
     padding-left: 0.35rem;
     border-right: 1.4rem solid transparent;
@@ -156,18 +159,33 @@ body {
 }
 
 .select-panel {
-    width:32vw;
+    width:42vw;
     display: flex;
     justify-content: space-between;
 }
 
 .currency-panel {
-    width: 32vw;
+    width: 100%;
     color: #354f52;
+    font-size: 1.2vw;
     font-weight: bold;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-bottom: 2vh;
+}
+
+.currency-panel small:first-child {
+    width: 100%;
+    text-align: right;
+}
+
+.currency-panel small:nth-child(2) {
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.currency-panel small:last-child {
+    width: 100%;
 }
 
 #title {
@@ -218,6 +236,11 @@ input[type="date"]:focus {
 .range {
     text-align: center;
     margin-top: 4.6vh;
+}
+
+.range div {
+    font-size: 1vw;
+    font-weight: bold;
 }
 
 .range span {

@@ -35,7 +35,7 @@ export const DateRange = ({ stateObj, updateObj, baseVal, calcOut }) => {
                     value={formatCurrentDate(stateObj.date)}
                     name="date"
                 />
-                <h4>You can choose a date between <span>{startDate}</span> and <span>{currentDate}</span></h4>
+                <div>You can choose a date between <span>{startDate}</span> and <span>{currentDate}</span></div>
             </div>
         </div>
     );
