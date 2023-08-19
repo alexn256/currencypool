@@ -13,8 +13,10 @@
   "author": "Alexander Naumov",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^4.3.3",
     "node-fetch": "^2.6.12",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "uuid": "^9.0.0"
