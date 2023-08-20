@@ -6,6 +6,7 @@ export const SelectPanel = ({stateObj, updateObj, baseVal, calcBase, outVal, cal
 
     const updateState = async (baseCurr, outCurr) => {
         const rates = await getLast30DaysRates(stateObj.date, baseCurr.code, outCurr.code);
+        console.log(rates);
         updateObj((obj) => {
             return {
                 ...obj,
