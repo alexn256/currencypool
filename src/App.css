@@ -16,6 +16,7 @@ body {
     display: inline-block;
     text-align: center;
     padding: 0.7rem 0.7rem 0.7rem;
+    margin: 0 0.7vw;
     box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 0.7rem;
 }
 
