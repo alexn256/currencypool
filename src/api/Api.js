@@ -2,19 +2,20 @@ import {v4 as uuid} from "uuid"
 
 const fetch = require("node-fetch");
 
-const BASE_URL = 'https://api.exchangerate.host';
+const BASE_URL = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1';
+
 
 export const getRate = async (date, base, out) => {
-    const url =  `${BASE_URL}/convert?from=${base}&to=${out}&date=${date}`;
+    // const url =  `${BASE_URL}/convert?from=${base}&to=${out}&date=${date}`;
+    const url = `${BASE_URL}/${date}/currencies/${base}/${out}.json`
     const response = await fetch(url);
     if (response.ok) {
         const text = await response.text();
         const json = JSON.parse(text);
-        const rate = json['result'];
         return {
             id: uuid(),
             date: json['date'],
-            value: roundToDecimal(rate)
+            value: roundToDecimal(json[out])
         }
     }
 };
@@ -35,18 +36,17 @@ export const getLast30DaysRates = async (date, base, out) => {
 }
 
 export const getCurrencyCodes = async () => {
-    const url = `${BASE_URL}/symbols`;
+    const url = `${BASE_URL}/latest/currencies.json`;
     const response = await fetch(url);
     const currencies = [];
     if (response.ok) {
         const text = await response.text();
         const json = JSON.parse(text);
-        const symbols = json.symbols;
-        for (let symbol in symbols) {
+        for (let symbol in json) {
             const entry = {
                 id: uuid(),
                 code: symbol,
-                description: symbols[symbol].description
+                description: json[symbol]
             }
             currencies.push(entry);
         }

@@ -31,9 +31,9 @@ export const SelectPanel = ({stateObj, updateObj, baseVal, calcBase, outVal, cal
     return (
         <div className="row-wrapper">
             <div className="select-panel">
-                <Selector selected={stateObj.base.code} setCurr={setBase} calc={calcOut} inputValue={baseVal}/>
+                <Selector selected={stateObj.base.code.toUpperCase()} setCurr={setBase} calc={calcOut} inputValue={baseVal}/>
                 <RateCard data={stateObj}/>
-                <Selector selected={stateObj.out.code} setCurr={setOut} calc={calcBase} inputValue={outVal}/>
+                <Selector selected={stateObj.out.code.toUpperCase()} setCurr={setOut} calc={calcBase} inputValue={outVal}/>
             </div>
         </div>
     );

@@ -16,8 +16,8 @@ function App() {
     const [outVal, setOutVal] = useState(0.00);
 
     const [obj, updateObj] = useState({
-        base: {code:'USD', description:'United States Dollar'},
-        out: {code:'UAH', description:'Ukrainian Hryvnia'},
+        base: {code:'usd', description:'United States Dollar'},
+        out: {code:'uah', description:'Ukrainian Hryvnia'},
         prev: 0.00,
         curr: 0.00,
         rates: [],
